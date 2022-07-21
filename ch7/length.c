@@ -21,3 +21,24 @@ int main(void)
 
     return 0;
 }
+
+double compute_average_word_length(const char *sentence)
+{
+    int word_cnt = 0;
+    int total_length = 0;
+    
+    while (*sentence != '\0')
+    {
+        if (*sentence == ' ')
+        {
+            word_cnt++;
+        }
+        else
+        {
+            total_length++;
+        }
+    }
+    word_cnt++;
+    
+    return total_length / word_cnt;
+}

@@ -57,3 +57,34 @@ int main(void)
 
     return 0;
 }
+
+bool is_palindrome(const char *msg)
+{
+    int len = strlen(msg);
+    int mid = len / 2;
+    char *front = msg;
+    char *back = msg + len - 1;
+    bool isPal = true;
+
+    if (len == 0)
+    {
+        return false;
+    }
+
+    while (1)
+    {
+        if (len == 1 || len == 0)
+        {
+            break;
+        }
+
+        if (*front != *back)
+        {
+            isPal = false;
+            break;
+        }
+        len -= 2;
+    }
+
+    return isPal;
+}

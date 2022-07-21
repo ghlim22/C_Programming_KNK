@@ -25,3 +25,18 @@ int main(void)
 
     return 0;
 }
+
+void reverse(char *msg)
+{
+    char *front = msg;
+    char *back = msg + strlen(msg) - 1;
+
+    while (front != back)
+    {
+        char temp = *front;
+        *front = *back;
+        *back = temp;
+        front++;
+        back--;
+    }
+}

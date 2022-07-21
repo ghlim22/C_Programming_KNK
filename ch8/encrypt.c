@@ -40,3 +40,20 @@ int main(void)
 
     return 0;
 }
+
+void encrypt(char *msg, int shift)
+{
+    for (; *msg != '\0'; ++msg)
+    {
+        if (*msg >= 'A' && *msg <= 'Z')
+        {
+            ch = *msg;
+            *msg = ((ch - 'A') + shift) % 26 + 'A';
+        }
+        else if (*msg >= 'a' && *msg <= 'z')
+        {
+            ch = *msg;
+            *msg = ((ch - 'a') + shift) % 26 + 'a';
+        }
+    }
+}

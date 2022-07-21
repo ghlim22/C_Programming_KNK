@@ -38,3 +38,13 @@ int main(void)
 
     return 0;
 }
+
+void reverse_name(char *name)
+{
+    char f = *name;
+    while (*name++ != ' ')
+    {
+        ;
+    }
+    printf("%s, %c.\n", name, f);
+}

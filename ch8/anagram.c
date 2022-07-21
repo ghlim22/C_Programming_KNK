@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdbool.h>
+#include <string.h>
 
 void read_word(int counts[26]);
 bool equal_array(int counts1[26], int counts2[26]);
@@ -55,4 +56,45 @@ bool equal_array(int counts1[26], int counts2[26])
     }
 
     return true;
+}
+
+bool are_anagrams(const char *word1, const char *word2)
+{
+    int counts1[26], counts2[26];
+    memset(counts1, 0, 26 * sizeof(int));
+    memset(counts2, 0, 26 * sizeof(int));
+
+    for (; *word1 != 0; ++word1)
+    {
+        char ch = *word1;
+        int index;
+        if (ch >= 'a' && ch <= 'z')
+        {
+            index = (ch - 'a');
+            counts1[index]++;
+        }
+        else if (ch >= 'A' && ch <= 'Z')
+        {
+            index = ch - 'A';
+            counts1[index]++;
+        }
+    }
+
+    for (; *word2 != 0; ++word2)
+    {
+        int index;
+        char ch = *word2;
+        if (ch >= 'a' && ch <= 'z')
+        {
+            index = (ch - 'a');
+            counts2[index]++;
+        }
+        else if (ch >= 'A' && ch <= 'Z')
+        {
+            index = ch - 'A';
+            counts2[index]++;
+        }
+    }
+
+    return equal_array(counts1, counts2);
 }
