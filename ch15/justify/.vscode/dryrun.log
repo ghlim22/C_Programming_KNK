@@ -1,0 +1,7 @@
+make: Entering directory `/Users/hyun/Projects/C_Progamming_KNK/ch15/justify'
+gcc -c justify.c
+gcc -c word.c
+gcc -c line.c
+gcc -o justify justify.o word.o line.o
+make: Leaving directory `/Users/hyun/Projects/C_Progamming_KNK/ch15/justify'
+ 
