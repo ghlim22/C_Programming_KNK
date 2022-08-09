@@ -3,25 +3,25 @@
 #include <stdlib.h>
 #include "readline.h"
 
-#define MAX_LEN (100)
-#define NAME_LEN (20)
+#define NAME_LEN (25)
 
-typedef struct
+typedef struct _part
 {
     int number;
     char name[NAME_LEN + 1];
     int on_hand;
     int price;
+    struct _part *next;
 } Part;
 
-int find_part(int num);
+Part *find_part(int num);
 void insert(void);
 void search(void);
 void update(void);
 void print(void);
 void update_price(void);
 
-Part inventory[MAX_LEN];
+Part *inventory = NULL; // points to the first part.
 int num_parts = 0;
 
 int main(void)
@@ -65,103 +65,130 @@ int main(void)
     return 0;
 }
 
-int find_part(int num)
+Part *find_part(int num)
 {
-    for (int i = 0; i < num_parts; ++i)
+    Part *p;
+
+    for (p = inventory; p != NULL && num > p->number; p = p->next)
+        ;
+
+    if (p != NULL && p->number == num)
     {
-        if (num == inventory[i].number)
-        {
-            return i;
-        }
+        return p;
     }
-    return -1;
+
+    return NULL;
 }
 
 void insert(void)
 {
     int part_num;
-    if (num_parts == MAX_LEN)
+    Part *new_node, *cur, *prev;
+
+    new_node = (Part *)malloc(sizeof(Part));
+    if (new_node == NULL)
     {
         printf("Database is full; can't add more parts.\n");
         return;
     }
 
     printf("Enter part number: ");
-    scanf(" %d", &part_num);
-    if (find_part(part_num) != -1)
+    scanf(" %d", &new_node->number);
+
+    for (prev = NULL, cur = inventory; cur != NULL && new_node->number > cur->number; prev = cur, cur = cur->next)
+    {
+        ;
+    }
+
+    if (cur != NULL && cur->number == new_node->number)
     {
         printf("Part already exists.\n");
+        free(new_node);
         return;
     }
-    inventory[num_parts].number = part_num;
-    printf("Enter part name: ");
-    read_line(inventory[num_parts].name, NAME_LEN);
-    printf("Enter quantity on hand: ");
-    scanf(" %d", &inventory[num_parts].on_hand);
-    printf("Enter price: ");
-    scanf(" %d", &inventory[num_parts].price);
 
-    num_parts++;
+    printf("Enter part name: ");
+    read_line(new_node->name, NAME_LEN);
+    printf("Enter quantity on hand: ");
+    scanf(" %d", &new_node->on_hand);
+    printf("Enter price: ");
+    scanf(" %d", &new_node->price);
+
+    new_node->next = cur;
+    if (prev == NULL)
+    {
+        inventory = new_node;
+    }
+    else
+    {
+        prev->next = new_node;
+    }
 }
 
 void search(void)
 {
-    int input, idx;
+    int input;
+    Part *p;
     printf("Enter part number: ");
     scanf(" %d", &input);
 
-    if ((idx = find_part(input)) == -1)
+    if ((p = find_part(input)) != NULL)
+    {
+        printf("Part name: %s\n", p->name);
+        printf("Quantity on hand: %d\n", p->on_hand);
+        printf("Price: %d\n", p->price);
+    }
+    else
     {
         printf("Part not found.\n");
-        return;
     }
-
-    printf("Part name: %s\n", inventory[idx].name);
-    printf("Quantity on hand: %d\n", inventory[idx].on_hand);
-    printf("Price: %d\n", inventory[idx].price);
 }
 
 void update(void)
 {
     int input, idx, change;
+    Part *p;
     printf("Enter part number: ");
     scanf(" %d", &input);
 
-    if ((idx = find_part(input)) == -1)
+    if ((p = find_part(input)) != NULL)
+    {
+        printf("Enter change in quantity on hand: ");
+        scanf(" %d", &change);
+        p->on_hand += change;
+    }
+    else
     {
         printf("Part not found.\n");
-        return;
     }
-
-    printf("Enter change in quantity on hand: ");
-    scanf(" %d", &change);
-    inventory[idx].on_hand += change;
 }
 
 void update_price(void)
 {
-    int input, idx, new_price;
+    int input, new_price;
+    Part *p;
     printf("Enter part number: ");
     scanf(" %d", &input);
 
-    if ((idx = find_part(input)) == -1)
+    if ((p = find_part(input)) != NULL)
+    {
+        printf("Enter new price: ");
+        scanf(" %d", &p->price);
+    }
+    else
     {
         printf("Part not found.\n");
-        return;
     }
-
-    printf("Enter new price of part: ");
-    scanf(" %d", &new_price);
-    inventory[idx].price = new_price;
 }
 
 void print(void)
 {
-    qsort(inventory, sizeof(inventory) / sizeof(inventory[0]), sizeof(inventory[0]), compare);
+
+    Part *p;
     printf("%15s%15s%20s%15s\n", "Part Number", "Part Name", "Quantiy on hand", "Price");
-    for (int i = 0; i < num_parts; ++i)
+    for (p = inventory; p != NULL; p = p->next)
     {
-        printf("%7d       %-25s%11d%11d\n", inventory[i].number, inventory[i].name, inventory[i].on_hand, inventory[i].price);
+        printf("%7d       %-25s%11d%11d\n", p->number, p->name, p->on_hand, p->price);
     }
 }
 
@@ -184,14 +211,21 @@ int compare(const void *a, const void *b)
     }
 }
 
-int compare_parts(const void *p, const void *q)
+int compare_desc(const void *a, const void *b)
 {
-    return ((Part *)p)->number - ((Part *)q)->number;
-}
+    Part *p1 = (Part *)a;
+    Part *p2 = (Part *)b;
 
-void print_part(Part *p)
-{
-    printf("Part number : %d\n", p->number);
-    printf("Part name: %s\n", p->name);
-    printf("Quantity on hand: %d\n", p->on_hand);
+    if (p1->number < p2->number)
+    {
+        return 1;
+    }
+    else if (p1->number > p2->number)
+    {
+        return -1;
+    }
+    else
+    {
+        return 0;
+    }
 }

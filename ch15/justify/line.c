@@ -1,8 +1,11 @@
 #include <stdio.h>
 #include <string.h>
 #include "line.h"
+#include "linked_list.h"
 
 #define MAX_LINE_LEN (60)
+
+Node *list = NULL;
 
 char line[MAX_LINE_LEN + 1];
 int line_len = 0;
@@ -17,6 +20,7 @@ void clear_line(void)
 
 void add_word(const char *word)
 {
+    add_to_list(&list, word);
     if (num_words > 0)
     {
         line[line_len] = ' ';

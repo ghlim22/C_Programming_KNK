@@ -7,7 +7,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 
 # This program built for i386-apple-darwin11.3.0
 
-# Make data base, printed on Thu Aug  4 11:03:08 2022
+# Make data base, printed on Thu Aug  4 08:36:31 2022
 
 # Variables
 
@@ -22,15 +22,15 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # automatic
 @F = $(notdir $@)
 # makefile
-CURDIR := /Users/hyun/Projects/C_Progamming_KNK/ch15/justify
+CURDIR := /Users/hyun/Projects/C_Progamming_KNK/ch15
 # makefile
 SHELL = /bin/sh
 # environment
 VSCODE_NLS_CONFIG = {"locale":"ko","availableLanguages":{"*":"ko"},"_languagePackId":"2dff5cff996ed6cbe8d8aa8740f86aa0.ko","_translationsConfigFile":"/Users/hyun/Library/Application Support/Code/clp/2dff5cff996ed6cbe8d8aa8740f86aa0.ko/tcf.json","_cacheRoot":"/Users/hyun/Library/Application Support/Code/clp/2dff5cff996ed6cbe8d8aa8740f86aa0.ko","_resolvedLanguagePackCoreLocation":"/Users/hyun/Library/Application Support/Code/clp/2dff5cff996ed6cbe8d8aa8740f86aa0.ko/3b889b090b5ad5793f524b5d1d39fda662b96a2a","_corruptedFile":"/Users/hyun/Library/Application Support/Code/clp/2dff5cff996ed6cbe8d8aa8740f86aa0.ko/corrupted.info","_languagePackSupport":true}
 # environment
 _ = /usr/bin/make
-# makefile (from `makefile', line 1)
-MAKEFILE_LIST :=  makefile
+# makefile
+MAKEFILE_LIST := 
 # environment
 __CFBundleIdentifier = com.microsoft.VSCode
 # environment
@@ -50,7 +50,7 @@ SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.U2fVDFXwTG/Listeners
 # automatic
 %F = $(notdir $%)
 # environment
-PWD = /Users/hyun/Projects/C_Progamming_KNK/ch15/justify
+PWD = /Users/hyun/Projects/C_Progamming_KNK/ch15
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = undefined
 # environment
@@ -64,7 +64,7 @@ VSCODE_CODE_CACHE_PATH = /Users/hyun/Library/Application Support/Code/CachedData
 # environment
 LOGNAME = hyun
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # environment
 ZSH = /Users/hyun/.oh-my-zsh
 # environment
@@ -84,7 +84,7 @@ MAKE_VERSION := 3.81
 # environment
 USER = hyun
 # makefile
-.DEFAULT_GOAL := justify
+.DEFAULT_GOAL := 
 # environment
 LESS = -R
 # automatic
@@ -138,7 +138,7 @@ LANG = C
 # environment
 VSCODE_PID = 2045
 # variable set hash-table stats:
-# Load=63/1024=6%, Rehash=0, Collisions=1/87=1%
+# Load=63/1024=6%, Rehash=0, Collisions=1/84=1%
 
 # Pattern-specific Variable Values
 
@@ -146,27 +146,15 @@ VSCODE_PID = 2045
 
 # Directories
 
-# . (device 16777220, inode 13827958): 15 files, no impossibilities.
+# . (device 16777220, inode 13827889): 5 files, no impossibilities.
 
-# 15 files, no impossibilities in 1 directories.
+# 5 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
 # No implicit rules.
 
 # Files
-
-# Not a target:
-line.h:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-justify.c:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
 
 # Not a target:
 all:
@@ -183,30 +171,25 @@ all:
 #  Modification time never checked.
 #  File has not been updated.
 
-word.o: word.c word.h
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-#  commands to execute (from `makefile', line 6):
-	gcc -c word.c
-	
-
 # Not a target:
-makefile:
+Makefile:
+#  A default, MAKEFILES, or -include/sinclude makefile.
 #  Implicit rule search has been done.
-#  Last modified 2022-07-22 15:13:48
+#  File does not exist.
 #  File has been updated.
-#  Successfully updated.
+#  Failed to be updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
-line.o: line.c line.h
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-#  commands to execute (from `makefile', line 8):
-	gcc -c line.c
-	
+# Not a target:
+makefile:
+#  A default, MAKEFILES, or -include/sinclude makefile.
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has been updated.
+#  Failed to be updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
 .DEFAULT:
@@ -215,53 +198,29 @@ line.o: line.c line.h
 #  File has not been updated.
 
 # Not a target:
-word.c:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-justify.o: justify.c word.h line.h
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-#  commands to execute (from `makefile', line 4):
-	gcc -c justify.c
-	
-
-justify: justify.o word.o line.o
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-#  commands to execute (from `makefile', line 2):
-	gcc -o justify justify.o word.o line.o
-	
-
-# Not a target:
-word.h:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-line.c:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+GNUmakefile:
+#  A default, MAKEFILES, or -include/sinclude makefile.
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has been updated.
+#  Failed to be updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # files hash-table stats:
-# Load=13/1024=1%, Rehash=0, Collisions=0/35=0%
+# Load=6/1024=1%, Rehash=0, Collisions=0/17=0%
 # VPATH Search Paths
 
 # No `vpath' search paths.
 
 # No general (`VPATH' variable) search path.
 
-# # of strings in strcache: 1
-# # of strcache buffers: 1
-# strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
-# strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
+# # of strings in strcache: 0
+# # of strcache buffers: 0
+# strcache size: total = 0 / max = 0 / min = 4096 / avg = 0
+# strcache free: total = 0 / max = 0 / min = 4096 / avg = 0
 
-# Finished Make data base on Thu Aug  4 11:03:08 2022
+# Finished Make data base on Thu Aug  4 08:36:31 2022
 
  
 make: *** No rule to make target `all'.  Stop.

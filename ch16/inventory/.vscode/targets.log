@@ -7,7 +7,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 
 # This program built for i386-apple-darwin11.3.0
 
-# Make data base, printed on Thu Aug  4 11:03:08 2022
+# Make data base, printed on Thu Jul 28 15:24:33 2022
 
 # Variables
 
@@ -22,7 +22,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # automatic
 @F = $(notdir $@)
 # makefile
-CURDIR := /Users/hyun/Projects/C_Progamming_KNK/ch15/justify
+CURDIR := /Users/hyun/Projects/C_Progamming_KNK/ch16/inventory
 # makefile
 SHELL = /bin/sh
 # environment
@@ -46,11 +46,11 @@ ELECTRON_RUN_AS_NODE = 1
 # default
 .FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.U2fVDFXwTG/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.uPeEdsatHQ/Listeners
 # automatic
 %F = $(notdir $%)
 # environment
-PWD = /Users/hyun/Projects/C_Progamming_KNK/ch15/justify
+PWD = /Users/hyun/Projects/C_Progamming_KNK/ch16/inventory
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = undefined
 # environment
@@ -84,7 +84,7 @@ MAKE_VERSION := 3.81
 # environment
 USER = hyun
 # makefile
-.DEFAULT_GOAL := justify
+.DEFAULT_GOAL := inventory
 # environment
 LESS = -R
 # automatic
@@ -136,7 +136,7 @@ MAKELEVEL := 0
 # environment
 LANG = C
 # environment
-VSCODE_PID = 2045
+VSCODE_PID = 613
 # variable set hash-table stats:
 # Load=63/1024=6%, Rehash=0, Collisions=1/87=1%
 
@@ -146,27 +146,15 @@ VSCODE_PID = 2045
 
 # Directories
 
-# . (device 16777220, inode 13827958): 15 files, no impossibilities.
+# . (device 16777220, inode 13924374): 11 files, no impossibilities.
 
-# 15 files, no impossibilities in 1 directories.
+# 11 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
 # No implicit rules.
 
 # Files
-
-# Not a target:
-line.h:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-justify.c:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
 
 # Not a target:
 all:
@@ -178,35 +166,37 @@ all:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
+readline.c:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+inventory.c:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
 .SUFFIXES:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
-word.o: word.c word.h
+# Not a target:
+readline.h:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  commands to execute (from `makefile', line 6):
-	gcc -c word.c
-	
 
 # Not a target:
 makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-22 15:13:48
+#  Last modified 2022-07-26 09:09:20
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-
-line.o: line.c line.h
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-#  commands to execute (from `makefile', line 8):
-	gcc -c line.c
-	
 
 # Not a target:
 .DEFAULT:
@@ -214,42 +204,32 @@ line.o: line.c line.h
 #  Modification time never checked.
 #  File has not been updated.
 
-# Not a target:
-word.c:
+readline.o: readline.c readline.h
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
+#  commands to execute (from `makefile', line 6):
+	gcc -c readline.c
+	
 
-justify.o: justify.c word.h line.h
+inventory.o: inventory.c readline.h
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 #  commands to execute (from `makefile', line 4):
-	gcc -c justify.c
+	gcc -c inventory.c
 	
 
-justify: justify.o word.o line.o
+inventory: inventory.o readline.o
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 #  commands to execute (from `makefile', line 2):
-	gcc -o justify justify.o word.o line.o
+	gcc -o inventory inventory.o readline.o
 	
 
-# Not a target:
-word.h:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-line.c:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
 # files hash-table stats:
-# Load=13/1024=1%, Rehash=0, Collisions=0/35=0%
+# Load=10/1024=1%, Rehash=0, Collisions=0/28=0%
 # VPATH Search Paths
 
 # No `vpath' search paths.
@@ -261,7 +241,7 @@ line.c:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Thu Aug  4 11:03:08 2022
+# Finished Make data base on Thu Jul 28 15:24:33 2022
 
  
 make: *** No rule to make target `all'.  Stop.
