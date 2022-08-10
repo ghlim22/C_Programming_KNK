@@ -53,9 +53,17 @@ int main(void)
     struct t (*b2[10])(int a, int b);
 
     // 11
-    int *f(int);
+    int *f10(int);
 
     int (*g2(int))(int);
 
     int (*a3[10])(int);
+
+    //12
+    float(*f4)(long);
+    int (*f6(float (*)(long), char *))(double);
+    char ch = 'A';
+    int n = f6(f4, &ch)(2.22);
+
+
 }
