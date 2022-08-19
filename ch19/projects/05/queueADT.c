@@ -87,7 +87,5 @@ bool is_empty(Queue que)
 
 void destory(Queue que)
 {
-    que->cur_nums = 0;
-    que->pos_insert = 0;
-    que->pos_remove = 0;
+    free(que);
 }
