@@ -1,0 +1,6 @@
+make --dry-run --keep-going --print-directory
+make: Entering directory `/Users/hyun/Projects/C_Programming_KNK/ch22/projects'
+make: Leaving directory `/Users/hyun/Projects/C_Programming_KNK/ch22/projects'
+ 
+make: *** No targets specified and no makefile found.  Stop.
+
